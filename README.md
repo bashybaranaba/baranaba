@@ -28,9 +28,9 @@ Abraham is **Gene Kogan's project**. Baranaba's role is an engineering contribut
 
 ## Visual direction
 
-The design takes cues from the Hermes Agent website's condensed typography, engraved imagery, and editorial hierarchy. It has its own deep forest green and warm ivory palette, with a small chartreuse accent. The header features an engraved portrait of Baranaba, based on his supplied photographs. An original illustration of hands shaping a continuous ribbon appears in the personal context section. No Nous artwork, fonts, logos, or code are used.
+The design takes cues from the Hermes Agent website's condensed typography, engraved imagery, and editorial hierarchy. It has its own deep forest green and warm ivory palette, with a plain typographic wordmark and restrained paper tones. The header features a clean crosshatched portrait of Baranaba, based on his supplied photographs. An original illustration of hands shaping a continuous ribbon appears in the personal context section. No Nous artwork, fonts, logos, or code are used.
 
-The artwork was created with the built-in image-generation tool. Masters are `assets/baranaba-engraving.png` and `assets/continuity-engraving.png`; the prompts are saved alongside them. Optimized WebP versions are in `public/images/`. The hero uses a small pointer interaction that respects reduced-motion preferences; all content and imagery remain available without JavaScript. Original headshots and abandoned portrait experiments are not included in the site.
+The artwork was created with the built-in image-generation tool. Masters are `assets/baranaba-portrait.png` and `assets/continuity-engraving.png`; the prompts are saved alongside them. Optimized WebP versions are in `public/images/`. The hero uses a small pointer interaction that respects reduced-motion preferences; all content and imagery remain available without JavaScript. Original headshots and abandoned portrait experiments are not included in the site.
 
 Fonts are served locally. Project imagery is local and contextualized with source links; the portfolio does not depend on third-party image hosts. There are no analytics trackers or contact-form services. Contact actions open the visitor's email client.
 
