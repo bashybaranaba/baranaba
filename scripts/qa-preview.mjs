@@ -1,0 +1,21 @@
+import {chromium} from '@playwright/test';
+const browser=await chromium.launch({channel:'chrome',headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1});
+page.on('pageerror',error=>console.log('PAGE_ERROR',error.message));
+page.on('console',message=>{if(message.type()==='error')console.log('CONSOLE_ERROR',message.text())});
+await page.goto('http://127.0.0.1:4322/',{waitUntil:'networkidle'});
+await page.waitForTimeout(2200);
+await page.screenshot({path:'/tmp/baranaba-research/home-desktop.png'});
+for(let y=0;y<await page.evaluate(()=>document.body.scrollHeight);y+=650){await page.evaluate(y=>window.scrollTo(0,y),y);await page.waitForTimeout(160)}
+await page.waitForTimeout(800);
+await page.screenshot({path:'/tmp/baranaba-research/home-full.png',fullPage:true});
+await page.setViewportSize({width:390,height:844});
+await page.evaluate(()=>scrollTo(0,0));
+await page.waitForTimeout(500);
+await page.screenshot({path:'/tmp/baranaba-research/home-mobile.png'});
+await page.screenshot({path:'/tmp/baranaba-research/home-mobile-full.png',fullPage:true});
+console.log('title',await page.title());
+console.log('overflow',await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,viewport:innerWidth})));
+await page.goto('http://127.0.0.1:4322/work/abraham/',{waitUntil:'networkidle'});
+await page.screenshot({path:'/tmp/baranaba-research/case-mobile-full.png',fullPage:true});
+await browser.close();

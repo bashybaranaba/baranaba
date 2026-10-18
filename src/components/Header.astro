@@ -1,0 +1,29 @@
+---
+import Icon from './Icon.astro';
+---
+<header class="site-header">
+  <a class="identity" href="/" aria-label="Baranaba Mugabane, home"><span class="identity-mark" aria-hidden="true">✳</span><span>Baranaba<br/>Mugabane</span></a>
+  <nav class="desktop-nav" aria-label="Main navigation">
+    <a href="/#work">Selected work</a><a href="/#research">Research</a><a href="/#teaching">In the room</a><a href="/#about">About</a>
+  </nav>
+  <a class="header-contact" href="/#contact">Let’s talk <Icon name="external" size={17}/></a>
+  <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" inert>
+    <a href="/#work">Selected work <span>01</span></a><a href="/#research">Research <span>02</span></a><a href="/#teaching">In the room <span>03</span></a><a href="/#about">About <span>04</span></a><a href="/#contact">Let’s talk <Icon name="external" size={25}/></a>
+  </nav>
+</header>
+<script>
+  const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const menu = document.querySelector<HTMLElement>('#mobile-nav');
+  function setOpen(open: boolean) {
+    button?.setAttribute('aria-expanded', String(open));
+    button?.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    if(menu) menu.inert = !open;
+    document.body.classList.toggle('menu-open', open);
+  }
+  button?.addEventListener('click',()=>setOpen(button.getAttribute('aria-expanded')!=='true'));
+  menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setOpen(false)));
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){setOpen(false);button?.focus();}});
+  document.addEventListener('click',event=>{if(event.target instanceof Node && !document.querySelector('.site-header')?.contains(event.target))setOpen(false);});
+  window.matchMedia('(min-width: 861px)').addEventListener('change',event=>{if(event.matches)setOpen(false);});
+</script>

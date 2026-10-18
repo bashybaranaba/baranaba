@@ -1,0 +1,40 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '@fontsource-variable/dm-sans';
+import '@fontsource/barlow-condensed/latin-200.css';
+import '@fontsource/barlow-condensed/latin-300.css';
+import '@fontsource/barlow-condensed/latin-500.css';
+import '../styles/global.css';
+import '../styles/editorial.css';
+interface Props { title?: string; description?: string; image?: string; }
+const {title='Baranaba Mugabane — Engineer, researcher & builder', description='Building at the intersection of AI, creative work, and human agency. Explore projects, provenance research, and practical AI education by Baranaba Mugabane.',image='/images/social-card.jpg'} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const imageUrl = new URL(image, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#164b45"/><meta name="description" content={description}/><meta name="author" content="Baranaba Mugabane"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/><link rel="canonical" href={canonical}/>
+    <meta property="og:type" content="website"/><meta property="og:site_name" content="Baranaba Mugabane"/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:url" content={canonical}/><meta property="og:image" content={imageUrl}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={title}/><meta name="twitter:description" content={description}/><meta name="twitter:image" content={imageUrl}/>
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({'@context':'https://schema.org','@type':'Person',name:'Baranaba Mugabane',url:Astro.site?.href,image:new URL('/images/baranaba-engraving.webp',Astro.site).href,jobTitle:'Software engineer and researcher',description,email:'mailto:bashybaranaba@gmail.com',sameAs:['https://github.com/bashybaranaba','https://www.linkedin.com/in/baranaba/'],knowsAbout:['Artificial intelligence','Software engineering','Digital provenance','AI education'],alumniOf:[{'@type':'CollegeOrUniversity',name:'Strathmore University'},{'@type':'CollegeOrUniversity',name:'Tampere University'},{'@type':'CollegeOrUniversity',name:'Tallinn University'},{'@type':'CollegeOrUniversity',name:'Lusófona University'}]})}/>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header/>
+    <main id="main"><slot/></main>
+    <Footer/>
+    <script>
+      import { animate, inView } from 'motion';
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if(!reduce.matches) {
+        inView('[data-reveal]', element => {
+          animate(element, {opacity:[0,1],transform:['translateY(22px)','translateY(0)']}, {duration:0.65,ease:[0.22,1,0.36,1]});
+        },{margin:'0px 0px -35px 0px'});
+      }
+    </script>
+  </body>
+</html>

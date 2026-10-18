@@ -1,0 +1,14 @@
+<figure class="hero-artwork" aria-label="An engraved portrait of Baranaba Mugabane in forest green and ivory">
+  <div class="artwork-index mono"><span>FIG. 01 / BARANABA MUGABANE</span><span>↗</span></div>
+  <div class="artwork-image"><img src="/images/baranaba-engraving.webp" alt="An ivory engraved portrait of Baranaba Mugabane, with fine construction arcs on a forest green ground" width="1254" height="1254" fetchpriority="high"/></div>
+  <figcaption class="artwork-caption mono"><span>NAIROBI, KENYA</span><span>CURIOSITY, IN PRACTICE</span></figcaption>
+</figure>
+<script>
+ import {animate} from 'motion';
+ const artwork=document.querySelector<HTMLElement>('.hero-artwork');
+ const image=artwork?.querySelector<HTMLElement>('.artwork-image');
+ if(artwork&&image&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  artwork.addEventListener('pointermove',event=>{if(event.pointerType==='touch')return;const r=artwork.getBoundingClientRect();const x=(event.clientX-r.left)/r.width-.5;const y=(event.clientY-r.top)/r.height-.5;animate(image,{rotateY:x*3,rotateX:-y*3,x:x*4,y:y*4},{duration:.6,ease:'easeOut'});});
+  artwork.addEventListener('pointerleave',()=>animate(image,{rotateX:0,rotateY:0,x:0,y:0},{duration:.8,ease:'easeOut'}));
+ }
+</script>
