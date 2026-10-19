@@ -48,7 +48,7 @@ test('reduced motion and no-JavaScript visitors keep a complete readable site',a
  await page.locator('.hero-artwork').hover();await expect(page.locator('.artwork-image')).toHaveCSS('transform','none');
  await context.close();
  const noJS=await browser.newContext({javaScriptEnabled:false});const fallback=await noJS.newPage();await fallback.goto(baseURL+'/');
- await expect(fallback.getByRole('heading',{name:/Curiosity,/})).toBeVisible();
+ await expect(fallback.getByRole('heading',{name:/Ideas,/})).toBeVisible();
  await expect(fallback.locator('.hero-artwork img')).toBeVisible();
  await expect(fallback.locator('.project-card')).toHaveCount(6);await noJS.close();
 });
