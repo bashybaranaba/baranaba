@@ -43,7 +43,7 @@ After changing the design, rebuild and serve `dist/` on port 4322, then run `nod
 
 ## PDF portfolio
 
-`public/documents/Baranaba-Mugabane-Portfolio.pdf` is the ten-page A4 edition, with selectable text, embedded fonts, bookmarks, and clickable project and source links. The footer links to it directly. Its origin page carries the three illustrated archive captions; the workshop page includes the Imaginekit session and the existing Moringa and CommonLab photographs. The supplied Imaginekit original is preserved at `assets/imaginekit-workshop-original.jpeg`.
+`public/documents/Baranaba-Mugabane-Portfolio.pdf` is the ten-page A4 edition, with selectable text, embedded fonts, bookmarks, and clickable project and source links. The footer links to it directly. Its origin page carries the three illustrated archive captions; the workshop page features Moringa School above equal supporting Imaginekit and CommonLab photographs, with a shared narrative about practical AI learning and system design. The supplied Imaginekit original is preserved at `assets/imaginekit-workshop-original.jpeg`.
 
 To regenerate, build and serve `dist/` on port 4322, then run `node scripts/export-portfolio.mjs`. It writes the PDF and editable HTML/CSS source to the ignored `output/portfolio/` directory. Set `PORTFOLIO_OUTPUT_DIR` to choose another output directory, or `PORTFOLIO_BASE_URL` for another local preview URL. The print styling lives in `assets/portfolio-print.css`; the website and PDF share the project identity, roles, and source links in `src/data/projects.ts`.
 
