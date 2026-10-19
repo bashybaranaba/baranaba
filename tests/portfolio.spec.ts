@@ -8,6 +8,7 @@ test('all stories render with local assets, working navigation, and no horizonta
   const response=await page.goto(path,{waitUntil:'networkidle'});
   expect(response?.status(),path).toBe(200);
   await expect(page.locator('h1')).toHaveCount(1);
+  const archive=page.locator('.origin-archive');if(await archive.count())await archive.locator('summary').click();
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),path).toBeTruthy();
   const images=page.locator('img');
   for(let i=0;i<await images.count();i++){
@@ -26,6 +27,13 @@ test('hero, story collage, archive clip, gallery, and mobile menu are usable',as
  await expect(page.locator('.origin-illustration img')).toHaveCount(3);
  const archive=page.locator('.origin-archive');
  await archive.locator('summary').click();
+ await expect(archive.locator('summary')).toHaveText('From the archive:');
+ const photos=archive.locator('img');await expect(photos).toHaveCount(2);
+ for(const photo of await photos.all()){
+  await photo.scrollIntoViewIfNeeded();await expect(photo).toBeVisible();
+  await expect(photo).not.toHaveJSProperty('naturalWidth',0);
+ }
+ expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBeTruthy();
  const video=archive.locator('video');await expect(video).toBeVisible();
  await video.evaluate(async v=>{await (v as HTMLVideoElement).play()});
  await expect(video).toHaveJSProperty('paused',false);
@@ -46,7 +54,7 @@ test('hero, story collage, archive clip, gallery, and mobile menu are usable',as
 
 test('home and a project meet core accessibility rules',async({page})=>{
  for(const path of ['/','/work/abraham/']){
-  await page.goto(path);await page.waitForTimeout(1000);const results=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
+  await page.goto(path);if(path==='/')await page.locator('.origin-archive summary').click();await page.waitForTimeout(1000);const results=await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();
   expect(results.violations.map(v=>({id:v.id,impact:v.impact,nodes:v.nodes.map(n=>({target:n.target,summary:n.failureSummary}))}))).toEqual([]);
  }
 });

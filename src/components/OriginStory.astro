@@ -26,13 +26,27 @@ import Icon from './Icon.astro';
   </div>
 
   <details class="origin-archive">
-    <summary>From the archive: a few seconds in 2017 <Icon name="plus" size={18}/></summary>
+    <summary>From the archive: <Icon name="plus" size={18}/></summary>
     <div class="archive-content">
-      <video controls playsinline preload="none" poster="/images/origin-video-poster.webp" width="480" height="640" aria-label="Silent archive footage of my homemade rocket fuel test in 2017: a flame burns briefly and smoke rises before clearing">
-        <source src="/video/experiment-2017.mp4" type="video/mp4"/>
-        <a href="/video/experiment-2017.mp4">Watch the archive clip</a>
-      </video>
-      <p>The original test, in a short, silent recording. The illustration above takes its cue from the flame and smoke in this clip.</p>
+      <figure>
+        <a href="/images/archive-rocket-2016.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open the original 2016 rocket photograph">
+          <img src="/images/archive-rocket-2016.jpg" alt="My handmade rocket standing on a printer at home in 2016" width="1728" height="2880" loading="lazy"/>
+        </a>
+        <figcaption><strong>The rocket · 2016</strong><p>The original photograph behind the illustration.</p></figcaption>
+      </figure>
+      <figure>
+        <video controls playsinline preload="none" poster="/images/origin-video-poster.webp" width="480" height="640" aria-label="Silent archive footage of my homemade rocket fuel test in 2017: a flame burns briefly and smoke rises before clearing">
+          <source src="/video/experiment-2017.mp4" type="video/mp4"/>
+          <a href="/video/experiment-2017.mp4">Watch the archive clip</a>
+        </video>
+        <figcaption><strong>The fuel test · 2017</strong><p>The original test, in a short, silent recording.</p></figcaption>
+      </figure>
+      <figure>
+        <a href="/images/archive-workbench-2026.jpg" target="_blank" rel="noopener noreferrer" aria-label="Open the original workbench photograph">
+          <img src="/images/archive-workbench-2026.jpg" alt="My workbench with a multimeter, small motors, soldering iron, and a tin of components beside a laptop" width="1200" height="1600" loading="lazy"/>
+        </a>
+        <figcaption><strong>The workbench · 2026</strong><p>The tools and parts behind the ink study.</p></figcaption>
+      </figure>
     </div>
   </details>
 
@@ -82,9 +96,13 @@ import Icon from './Icon.astro';
   .origin-archive summary::-webkit-details-marker{display:none}
   .origin-archive summary svg{flex-shrink:0;transition:transform .25s}
   .origin-archive[open] summary svg{transform:rotate(45deg)}
-  .archive-content{display:flex;align-items:center;gap:40px;padding:30px;margin-top:20px;background:#e9e9de}
-  .archive-content video{display:block;max-width:260px;width:100%;height:auto;background:var(--forest)}
-  .archive-content p{font-size:14px;line-height:1.85;color:var(--muted);max-width:400px}
+  .archive-content{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:start;gap:25px;padding:25px;margin-top:20px;background:#e9e9de}
+  .archive-content figure{margin:0;min-width:0}
+  .archive-content figure>a{display:block;cursor:zoom-in}
+  .archive-content img,.archive-content video{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:contain;background:var(--forest)}
+  .archive-content figcaption{display:block;margin-top:16px;line-height:1.7}
+  .archive-content figcaption strong{font-size:14px;font-weight:500;color:var(--ink)}
+  .archive-content figcaption p{font-size:12px;line-height:1.8;color:var(--muted);margin-top:5px}
   .origin-continuation{margin-top:60px}
   .origin-continuation h3{font-family:var(--serif);font-size:clamp(40px,3.6vw,56px);font-weight:300;line-height:1.08;letter-spacing:-.02em}
   @media(max-width:860px){
@@ -116,9 +134,8 @@ import Icon from './Icon.astro';
     .origin-continuation h3{font-size:42px}
     .origin-archive{margin-top:30px;padding-block:16px}
     .origin-archive summary{font-size:12px;gap:20px}
-    .archive-content{flex-direction:column;align-items:start;gap:22px;padding:20px}
-    .archive-content video{max-width:240px;align-self:center}
-    .archive-content p{font-size:13px}
+    .archive-content{grid-template-columns:1fr;gap:28px;padding:20px}
+    .archive-content figcaption p{font-size:13px}
   }
   @media(prefers-reduced-motion:reduce){.origin-archive summary svg{transition:none}}
 </style>
