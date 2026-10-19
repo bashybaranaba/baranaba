@@ -19,9 +19,18 @@ test('all stories render with local assets, working navigation, and no horizonta
  expect(errors).toEqual([]);
 });
 
-test('hero artwork, gallery, and mobile menu are usable',async({page},testInfo)=>{
+test('hero, story collage, archive clip, gallery, and mobile menu are usable',async({page},testInfo)=>{
  await page.goto('/');await expect(page.locator('.hero-artwork img')).toBeVisible();
  await expect(page.locator('.hero-artwork img')).not.toHaveJSProperty('naturalWidth',0);
+ await expect(page.locator('.hero-artwork img')).toHaveAttribute('src','/images/baranaba-portrait.webp');
+ await expect(page.locator('.origin-illustration img')).toHaveCount(3);
+ const archive=page.locator('.origin-archive');
+ await archive.locator('summary').click();
+ const video=archive.locator('video');await expect(video).toBeVisible();
+ await video.evaluate(async v=>{await (v as HTMLVideoElement).play()});
+ await expect(video).toHaveJSProperty('paused',false);
+ await archive.locator('summary').click();
+ await expect(video).toHaveJSProperty('paused',true);
  if(testInfo.project.name==='mobile'){
   const menu=page.locator('.menu-toggle');await menu.click();
   await expect(menu).toHaveAttribute('aria-expanded','true');
@@ -48,9 +57,11 @@ test('reduced motion and no-JavaScript visitors keep a complete readable site',a
  await page.locator('.hero-artwork').hover();await expect(page.locator('.artwork-image')).toHaveCSS('transform','none');
  await context.close();
  const noJS=await browser.newContext({javaScriptEnabled:false});const fallback=await noJS.newPage();await fallback.goto(baseURL+'/');
- await expect(fallback.getByRole('heading',{name:/Ideas,/})).toBeVisible();
+ await expect(fallback.getByRole('heading',{name:/Curiosity,/})).toBeVisible();
  await expect(fallback.locator('.hero-artwork img')).toBeVisible();
- await expect(fallback.locator('.project-card')).toHaveCount(6);await noJS.close();
+ await expect(fallback.locator('.project-card')).toHaveCount(6);
+ await fallback.locator('.origin-archive summary').click();
+ await expect(fallback.locator('.origin-archive video')).toBeVisible();await noJS.close();
 });
 
 test('PDFs, sitemap, and social preview are available',async({request})=>{

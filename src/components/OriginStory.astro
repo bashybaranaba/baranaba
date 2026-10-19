@@ -1,0 +1,124 @@
+---
+import Icon from './Icon.astro';
+---
+<section id="about" class="origin-section container" aria-labelledby="about-heading">
+  <div class="origin-heading" data-reveal>
+    <h2 id="about-heading">Before the code,<br/><em>there were parts.</em></h2>
+    <div>
+      <p>I’ve been building things for as long as I can remember. As a kid, that meant simple circuits, little motor-driven robots, and rockets. I wanted to see what I could make move, what would work, and what I could try next.</p>
+      <p>Getting my hands dirty was part of the appeal. An idea became something I could hold, take apart, change, and test again.</p>
+    </div>
+  </div>
+
+  <div class="origin-gallery" role="group" aria-label="An illustrated collage of my rocket, an outdoor experiment and my workbench" data-reveal>
+    <figure class="origin-study origin-rocket">
+      <div class="origin-illustration"><img src="/images/origin-rocket.webp" alt="An ink illustration of my handmade rocket, with its long narrow body, pointed nose and angular fins" width="1024" height="1280" loading="lazy"/></div>
+      <figcaption><h3>Built by hand.</h3><p>One of my early rockets, drawn from a photograph in my 2016 archive.</p></figcaption>
+    </figure>
+    <figure class="origin-study origin-ignition">
+      <div class="origin-illustration"><img src="/images/origin-ignition.webp" alt="An illustrated moment from a 2017 experiment: a small bright flame and a curling plume of smoke above rough paving" width="1024" height="1280" loading="lazy"/></div>
+      <figcaption><h3>And then, something happens.</h3><p>A flash of flame, a trail of smoke. A moment from my 2017 experiment footage, reimagined in ink.</p></figcaption>
+    </figure>
+    <figure class="origin-study origin-workbench">
+      <div class="origin-illustration"><img src="/images/origin-workbench.webp" alt="An ink study of tools from my workbench: a multimeter, salvaged motors, a soldering iron and a tin of electronic components" width="1024" height="1280" loading="lazy"/></div>
+      <figcaption><h3>Still getting my hands dirty.</h3><p>Motors, loose components, a multimeter. Tools from my workbench today.</p></figcaption>
+    </figure>
+  </div>
+
+  <details class="origin-archive">
+    <summary>From the archive: a few seconds in 2017 <Icon name="plus" size={18}/></summary>
+    <div class="archive-content">
+      <video controls playsinline preload="none" poster="/images/origin-video-poster.webp" width="480" height="640" aria-label="Silent archive footage of a small outdoor experiment in 2017: a flame burns briefly and smoke rises before clearing">
+        <source src="/video/experiment-2017.mp4" type="video/mp4"/>
+        <a href="/video/experiment-2017.mp4">Watch the archive clip</a>
+      </video>
+      <p>A short, silent recording from those early experiments. The illustration above takes its cue from the flame and smoke in this clip.</p>
+    </div>
+  </details>
+
+  <div class="origin-continuation" data-reveal>
+    <h3>Then I found a different<br/><em>kind of workshop.</em></h3>
+    <div>
+      <p>At fourteen, I started making simple games with C# and Unity. Software opened up another way to build: whole worlds with their own rules, places you could explore and interact with. Alongside that, I wanted my hardware projects to do more than a motor or a simple circuit could manage. Learning to code gave me a way into programmable circuits, too.</p>
+      <p>By 2018, I was building games for visually impaired players, using sound to open up a world. Later, a new question took hold: when an AI makes something, where do the people behind it go?</p>
+      <p>That question became Arttribute, and led into provenance research, autonomous agents, creative collaborations, and classrooms. The materials have changed. I still like finding out what an idea can become by building it.</p>
+    </div>
+  </div>
+</section>
+<script>
+  import {animate, inView} from 'motion';
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    inView('.origin-illustration',element=>{
+      const image=element.querySelector('img');
+      if(image)animate(image,{scale:[1.045,1]},{duration:1.5,ease:[0.22,1,0.36,1]});
+    },{margin:'0px 0px -40px 0px'});
+  }
+  document.querySelector<HTMLDetailsElement>('.origin-archive')?.addEventListener('toggle',event=>{
+    const archive=event.currentTarget as HTMLDetailsElement;
+    if(!archive.open)archive.querySelector('video')?.pause();
+  });
+</script>
+<style>
+  .origin-section{padding-block:100px 110px}
+  .origin-heading,.origin-continuation{display:grid;grid-template-columns:.9fr 1.1fr;gap:9%;align-items:start}
+  .origin-heading h2{font-size:clamp(53px,5.2vw,80px);font-weight:200;line-height:1.02}
+  .origin-heading p,.origin-continuation p{font-size:15px;line-height:1.85;color:var(--muted)}
+  .origin-heading p+p,.origin-continuation p+p{margin-top:18px}
+  .origin-gallery{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));position:relative;isolation:isolate;gap:0;padding:20px;margin-top:42px}
+  .origin-study{display:contents}
+  .origin-illustration{grid-row:1;align-self:start;background:var(--forest);overflow:hidden;border:7px solid var(--paper);box-shadow:0 10px 35px #164b4518}
+  .origin-illustration img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+  .origin-rocket .origin-illustration{grid-column:1/5;transform:rotate(-3deg);margin-top:38px;z-index:2}
+  .origin-ignition .origin-illustration{grid-column:4/10;transform:rotate(2deg);z-index:1}
+  .origin-workbench .origin-illustration{grid-column:9/13;transform:rotate(-3deg);margin-top:165px;z-index:3}
+  .origin-study figcaption{grid-row:2;padding-top:35px;padding-right:27px;display:block}
+  .origin-rocket figcaption{grid-column:1/5}
+  .origin-ignition figcaption{grid-column:5/9}
+  .origin-workbench figcaption{grid-column:9/13}
+  .origin-study h3{font-family:var(--serif);font-size:32px;line-height:1.08;font-weight:300;color:var(--ink);letter-spacing:-.015em}
+  .origin-study figcaption p{font-size:12px;line-height:1.8;max-width:320px;margin-top:10px;color:var(--muted)}
+  .origin-archive{margin-top:25px;padding-block:19px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .origin-archive summary{display:flex;align-items:center;justify-content:space-between;gap:25px;font-size:13px;line-height:1.7;cursor:pointer;list-style:none}
+  .origin-archive summary::-webkit-details-marker{display:none}
+  .origin-archive summary svg{flex-shrink:0;transition:transform .25s}
+  .origin-archive[open] summary svg{transform:rotate(45deg)}
+  .archive-content{display:flex;align-items:center;gap:40px;padding:30px;margin-top:20px;background:#e9e9de}
+  .archive-content video{display:block;max-width:260px;width:100%;height:auto;background:var(--forest)}
+  .archive-content p{font-size:14px;line-height:1.85;color:var(--muted);max-width:400px}
+  .origin-continuation{margin-top:60px}
+  .origin-continuation h3{font-family:var(--serif);font-size:clamp(40px,3.6vw,56px);font-weight:300;line-height:1.08;letter-spacing:-.02em}
+  @media(max-width:860px){
+    .origin-section{padding-block:75px}
+    .origin-heading,.origin-continuation{grid-template-columns:1fr 1fr;gap:6%}
+    .origin-heading h2{font-size:58px}
+    .origin-heading p,.origin-continuation p{font-size:14px}
+    .origin-gallery{padding:12px;margin-top:35px}
+    .origin-workbench .origin-illustration{margin-top:105px}
+    .origin-study figcaption{padding-right:20px;padding-top:25px}
+    .origin-study h3{font-size:28px}
+    .origin-study figcaption p{font-size:11px}
+  }
+  @media(max-width:600px){
+    .origin-section{padding-block:66px 75px}
+    .origin-heading,.origin-continuation{display:block}
+    .origin-heading h2{font-size:53px}
+    .origin-heading>div,.origin-continuation>div{margin-top:25px}
+    .origin-heading p,.origin-continuation p{font-size:15px}
+    .origin-gallery{padding:8px;margin-top:32px}
+    .origin-illustration{border-width:4px;box-shadow:0 5px 15px #164b4518}
+    .origin-rocket .origin-illustration{grid-column:1/6;margin-top:0}
+    .origin-ignition .origin-illustration{margin-top:38px}
+    .origin-workbench .origin-illustration{grid-column:8/13;margin-top:125px}
+    .origin-study figcaption{grid-column:1/-1;grid-row:auto;padding:25px 0 0}
+    .origin-study h3{font-size:31px}
+    .origin-study figcaption p{max-width:none;font-size:13px;margin-top:7px}
+    .origin-continuation{margin-top:45px}
+    .origin-continuation h3{font-size:42px}
+    .origin-archive{margin-top:30px;padding-block:16px}
+    .origin-archive summary{font-size:12px;gap:20px}
+    .archive-content{flex-direction:column;align-items:start;gap:22px;padding:20px}
+    .archive-content video{max-width:240px;align-self:center}
+    .archive-content p{font-size:13px}
+  }
+  @media(prefers-reduced-motion:reduce){.origin-archive summary svg{transition:none}}
+</style>

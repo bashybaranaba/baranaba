@@ -1,6 +1,6 @@
 # Baranaba Mugabane
 
-A personal portfolio about engineering, AI research, creative collaboration, and practical education. The narrative runs from accessible games to Arttribute, provenance, autonomous agents, and workshops.
+A personal portfolio about engineering, AI research, creative collaboration, and practical education. The narrative starts with childhood hardware experiments, rockets, and games in C# and Unity at fourteen, then follows accessible games into Arttribute, provenance, autonomous agents, and workshops.
 
 Live at [baranaba.vercel.app](https://baranaba.vercel.app).
 
@@ -16,6 +16,7 @@ To test the production build, serve `dist/` on port 4322 and run `npm run test:e
 
 - `src/data/projects.ts`: the six project stories, roles, external links, and contextual sources.
 - `src/pages/index.astro`: the personal narrative, research, teaching, experience, and selected writing.
+- `src/components/OriginStory.astro`: the illustrated early-building collage, personal story, and optional 2017 archive clip.
 - `src/pages/work/[slug].astro`: statically generated project pages.
 - `src/styles/editorial.css`: the forest-and-ivory visual language and responsive typography.
 - `src/components/HeroArtwork.astro`: the opening engraving and restrained pointer interaction.
@@ -28,9 +29,9 @@ Abraham is **Gene Kogan's project**. Baranaba's role is an engineering contribut
 
 ## Visual direction
 
-The design takes cues from the Hermes Agent website's condensed typography, engraved imagery, and editorial hierarchy. It has its own deep forest green and warm ivory palette, with a plain typographic wordmark and restrained paper tones. The hero features an original illustration of hands shaping a continuous ribbon. A clean crosshatched portrait of Baranaba, based on his supplied photographs, accompanies his story in the second section. No Nous artwork, fonts, logos, or code are used.
+The design takes cues from the Hermes Agent website's condensed typography, engraved imagery, and editorial hierarchy. It has its own deep forest green and warm ivory palette, with a plain typographic wordmark and restrained paper tones. The hero pairs “Curiosity, put to work.” with a clean crosshatched portrait of Baranaba, based on his supplied photographs. The next section composes engraved studies of his handmade rocket, a flame-and-smoke moment from his 2017 footage, and his present-day tools into an overlapping collage. No Nous artwork, fonts, logos, or code are used.
 
-The artwork was created with the built-in image-generation tool. Masters are `assets/baranaba-portrait.png` and `assets/continuity-engraving.png`; the prompts are saved alongside them. Optimized WebP versions are in `public/images/`. The hero uses a small pointer interaction that respects reduced-motion preferences; all content and imagery remain available without JavaScript. Original headshots and abandoned portrait experiments are not included in the site.
+The artwork was created with the built-in image-generation tool. Masters are `assets/baranaba-portrait.png`, `assets/continuity-engraving.png`, and `assets/origin-{rocket,ignition,workbench}.png`; the prompts are saved alongside them. Optimized WebP versions are in `public/images/`. The hero uses a small pointer interaction that respects reduced-motion preferences; all content and imagery remain available without JavaScript. The collage has a brief reveal and settling motion that also honors reduced-motion preferences. An optional native video disclosure offers the supplied 2017 footage as a small, silent H.264 MP4, without autoplay or eager loading. Closing the disclosure pauses playback. The story distinguishes archival experiments from photographs of current tools; the drawings are described as illustrations rather than documentary images. Original headshots and abandoned portrait experiments are not included in the site.
 
 Fonts are served locally. Project imagery is local and contextualized with source links; the portfolio does not depend on third-party image hosts. There are no analytics trackers or contact-form services. Contact actions open the visitor's email client.
 

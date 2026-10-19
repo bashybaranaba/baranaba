@@ -1,29 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HeroArtwork from '../components/HeroArtwork.astro';
+import OriginStory from '../components/OriginStory.astro';
 import Icon from '../components/Icon.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import {projects,readings} from '../data/projects';
 ---
 <Layout>
   <div class="hero-band"><section class="hero container" aria-labelledby="hero-heading">
-    <div class="hero-copy"><p class="eyebrow hero-eyebrow"><span class="status-dot"></span> Software engineer · Researcher · Builder</p><h1 id="hero-heading">Ideas,<br/>made<br/><em>real.</em></h1><p class="hero-intro">Hi, I’m Baranaba. I build at the intersection of AI, creative work, and human agency. Ideas draw me in. Making them work keeps me there.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <Icon name="down" size={18}/></a><a class="quiet-link" href="#about">A little about me <Icon name="arrow" size={17}/></a></div></div>
+    <div class="hero-copy"><p class="eyebrow hero-eyebrow"><span class="status-dot"></span> Software engineer · Researcher · Builder</p><h1 id="hero-heading">Curiosity,<br/>put to<br/><em>work.</em></h1><p class="hero-intro">Hi, I’m Baranaba. I build at the intersection of AI, creative work, and human agency. Ideas draw me in. Making them work keeps me there.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <Icon name="down" size={18}/></a><a class="quiet-link" href="#about">A little about me <Icon name="arrow" size={17}/></a></div></div>
     <HeroArtwork/>
   </section></div>
 
-  <section id="about" class="intro-section container" aria-labelledby="about-heading">
-    <figure class="story-portrait" data-reveal>
-      <img src="/images/baranaba-portrait.webp" alt="A crosshatched portrait of Baranaba Mugabane in forest green and ivory" width="1254" height="1254" loading="lazy"/>
-    </figure>
-    <div class="story-copy" data-reveal>
-      <h2 id="about-heading">It started with a game<br/>you <em>could hear.</em></h2>
-      <div class="intro-paragraphs">
-        <p class="story-lead">I’m Baranaba Mugabane, a software engineer and researcher from Kenya. I like difficult questions, thoughtful interfaces, and the feeling of getting something to work.</p>
-        <p>In 2018, I was building games for visually impaired players, using sound to open up a world. Later came a different question: when an AI makes something, where do the people behind it go?</p>
-        <p>That question became Arttribute. It led me into provenance research, autonomous agents, creative collaborations, and classrooms. Different projects, but a familiar instinct: make something that lets more people take part.</p>
-      </div>
-    </div>
-  </section>
+  <OriginStory/>
 
   <section id="work" class="work-section container" aria-labelledby="work-heading"><div class="section-heading" data-reveal><div><h2 id="work-heading">Questions, made <em>tangible.</em></h2></div><p>A connected body of work.<br/>A few different ways into it.</p></div><div class="project-grid">{projects.map(project=><ProjectCard project={project}/>)}</div></section>
 
