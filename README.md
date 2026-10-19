@@ -40,3 +40,11 @@ Fonts are served locally. Project imagery is local and contextualized with sourc
 The Vercel project belongs to the `bashybaranabas-projects` Hobby workspace. GitHub integration deploys changes pushed to `main`. The production hostname is configured in `astro.config.mjs` and `public/robots.txt`.
 
 After changing the design, rebuild and serve `dist/` on port 4322, then run `node scripts/social-card.mjs` to refresh the social preview. Rebuild once more to include the updated card.
+
+## PDF portfolio
+
+`public/documents/Baranaba-Mugabane-Portfolio.pdf` is the ten-page A4 edition, with selectable text, embedded fonts, bookmarks, and clickable project and source links. The footer links to it directly.
+
+To regenerate, build and serve `dist/` on port 4322, then run `node scripts/export-portfolio.mjs`. It writes the PDF and editable HTML/CSS source to the ignored `output/portfolio/` directory. Set `PORTFOLIO_OUTPUT_DIR` to choose another output directory, or `PORTFOLIO_BASE_URL` for another local preview URL. The print styling lives in `assets/portfolio-print.css`; the website and PDF share the project identity, roles, and source links in `src/data/projects.ts`.
+
+Abraham’s expanded story was checked against Gene’s original 2019 essay and NeurIPS workshop proposal, his earlier work and ml4a resources, the 2025 Gene Kogan/Xander Steenbrugge interview in Right Click Save, and the First Works exhibition timeline. The writing distinguishes the long-term artistic ambition from Baranaba’s documented engineering contribution.

@@ -11,3 +11,5 @@ playwright-report/
 artwork/
 .cache/
 .vercel
+
+output/portfolio/

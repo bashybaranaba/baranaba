@@ -89,26 +89,38 @@ export const projects: Project[] = [
   {
     slug:'abraham',name:'Abraham',number:'04',category:'Creative AI · collaboration',role:'Engineering contributor · Eden Labs',
     color:'rose',image:'abraham.webp',alt:'A view into Abraham, Gene Kogan’s ongoing autonomous artist project',
-    question:'What would it mean for an artificial artist to have a practice?',
-    summary:'Engineering at the meeting point of autonomous systems and artistic practice, with Gene Kogan and the Eden team.',
+    question:'What would it mean for an artist to emerge from many minds?',
+    summary:'Helping build the infrastructure behind Gene Kogan’s long-running experiment in collective creativity and an autonomous artistic practice.',
     url:'https://abraham.ai',domain:'abraham.ai',
-    intro:'Abraham makes the question of machine creativity unusually tangible. Conceived by artist and engineer Gene Kogan, it is a long-running experiment in an artificial artist developing a practice, a community, and a life over time.',
+    intro:'An artist’s practice grows through encounters: things seen, conversations had, decisions made over time. Abraham takes that familiar idea into unfamiliar territory. Conceived by Gene Kogan, it asks whether a community could help bring an artificial artist into being, with a character and a practice that develop beyond any one person’s intentions.',
     sections:[
-      {title:'An artwork that keeps becoming',paragraphs:[
-        'The project’s roots go back to Gene’s early thinking about decentralised intelligence and collective creativity. Its first works emerged from community-submitted prompts in 2021. In October 2025, Abraham began a thirteen-year covenant: an unfolding commitment to daily creation, running through 2038.',
-        'That timescale changes the character of the experiment. A single compelling output is only the beginning. There are questions about continuity, feedback, community participation, and the conditions under which a system can sustain creative activity.',
+      {title:'Before Abraham, a way of working',paragraphs:[
+        'Gene’s path into AI art began in the overlap between programming, music, and generative systems. In A Book from the Sky (2015), he trained a neural network on Chinese handwriting and explored the invented characters between familiar forms. Cubist Mirror brought near-real-time style transfer into an installation people could step in front of. These were ways of making a model’s strange possibilities visible and tangible.',
+        'Sharing the tools was part of the work. Through Machine Learning for Artists, or ml4a, Gene published code, explanations, and teaching resources that let other artists experiment for themselves. That combination of open tools, hands-on learning, and collective exploration helps explain where Abraham comes from.',
       ]},
-      {title:'My part in a collective effort',paragraphs:[
-        'During my time as a software engineer at Eden Labs, from January 2025 to March 2026, I worked on infrastructure for autonomous generative AI agents, including backend services and smart contract coordination logic. My contribution sits within the engineering collaboration around Abraham, alongside Gene and the Eden team.',
-        'Working in this territory connects two interests I keep returning to: the systems that let agents act in the world, and the cultural questions that become visible when they do. Abraham belongs to Gene’s artistic practice and a wider network of collaborators. I am glad to have helped build part of the machinery that supports it.',
+      {title:'An artist made of many minds',paragraphs:[
+        'The idea took shape in 2017 as Gene began exploring Ethereum and decentralisation. In his 2019 essay Artist in the Cloud and a NeurIPS workshop paper, he proposed an artist whose data, code, curation, and governance would be shaped by a network of participants. Autonomy, originality, and uniqueness were the design questions: could something develop a creative identity that no single contributor could dictate or reproduce?',
+        'The name carries that history. It nods to Harold Cohen’s AARON, while Gene’s writing connects the biblical Abraham and Jung’s collective unconscious to an idea of shared imagination. The central image is a creative being emerging through many people’s contributions. In that framing, the community is part of how the artist comes to have a mind.',
+      ]},
+      {title:'A practice measured in years',paragraphs:[
+        'In 2021, a public interface let people submit prompts, producing roughly 2,500 early works. The software around Abraham became a starting point for Eden, the creative-agent platform Gene developed with Xander Steenbrugge. An experiment in one artist began opening into an environment where other creative agents could take shape.',
+        'On 19 October 2025, Abraham entered a thirteen-year covenant, running toward 2038: an ongoing cycle of creation and community dialogue, with a work brought forward each day. Gene describes the long horizon as time to develop toward greater independence. It gives continuity, feedback, and the means to sustain a practice a place in the artwork itself. The interesting question becomes what a creative life might grow into through years of participation.',
+      ]},
+      {title:'The machinery I helped build',paragraphs:[
+        'My contribution was through the Eden engineering collaboration. As a software engineer at Eden Labs from January 2025 to March 2026, I worked on infrastructure for autonomous generative AI agents, including backend services and smart contract coordination logic. Abraham is Gene’s project, supported by a wider team; my role was helping build part of the infrastructure around that creative ambition.',
+        'For me, the appeal is where an expansive artistic question meets the practical work of software. A sustained practice needs systems that can carry activity forward, connect participants, and support the next encounter. Helping with that machinery brought my interests in agent systems, human agency, and creative work into the same room.',
       ]},
     ],
-    details:[{label:'Collaboration',value:'Gene Kogan & the Eden team'},{label:'My role',value:'Backend & agent infrastructure'},{label:'At Eden Labs',value:'January 2025 – March 2026'}],
+    details:[{label:'Project & artistic direction',value:'Gene Kogan'},{label:'My contribution',value:'Backend services · agent infrastructure · smart contract coordination'},{label:'Collaboration',value:'Eden team · January 2025 – March 2026'}],
     sources:[
-      {title:'Meet Abraham',url:'https://abraham.ai',note:'The living project'},
-      {title:'Gene Kogan',url:'https://genekogan.com',note:'The artist behind Abraham'},
-      {title:'The genesis of Abraham',url:'https://www.automata.art/editorials/gene-kogan-abraham-interview/',note:'Gene’s account of the eight-year journey'},
-      {title:'Abraham at Kanbas',url:'https://kanbas.art/artists/abraham-gene-kogan',note:'The project’s creative history'},
+      {title:'Meet Abraham',url:'https://abraham.ai',note:'The ongoing project and its covenant'},
+      {title:'Gene Kogan’s practice',url:'https://genekogan.com',note:'Creative coding, installations, teaching, and autonomous systems'},
+      {title:'A Book from the Sky',url:'https://genekogan.com/works/a-book-from-the-sky/',note:'Gene’s 2015 experiment with Chinese handwriting and generative models'},
+      {title:'Machine Learning for Artists',url:'https://ml4a.net',note:'The open tools and educational work behind the wider practice'},
+      {title:'Artist in the Cloud',url:'https://medium.com/@genekogan/artist-in-the-cloud-8384824a75c7',note:'Gene’s original introduction · July 2019'},
+      {title:'The NeurIPS 2019 proposal',url:'https://genekogan.com/misc/neurips2019.pdf',note:'Autonomy, originality, uniqueness, and collective imagination · PDF'},
+      {title:'Agents of Eden',url:'https://www.rightclicksave.com/article/agents-of-eden-gene-kogan-and-xander-steenbrugge-interview-ai-art',note:'Gene Kogan and Xander Steenbrugge on Abraham, Eden, and the long-term vision'},
+      {title:'Abraham’s First Works',url:'https://www.automata.art/exhibitions/abraham/',note:'The 2021 genesis collection and the timeline into the covenant'},
     ],
   },
   {

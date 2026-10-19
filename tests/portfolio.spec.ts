@@ -25,6 +25,7 @@ test('hero, story collage, archive clip, gallery, and mobile menu are usable',as
  await expect(page.locator('.hero-artwork img')).not.toHaveJSProperty('naturalWidth',0);
  await expect(page.locator('.hero-artwork img')).toHaveAttribute('src','/images/baranaba-portrait.webp');
  await expect(page.locator('.origin-illustration img')).toHaveCount(3);
+ await expect(page.getByRole('link',{name:'Portfolio PDF'})).toHaveAttribute('href','/documents/Baranaba-Mugabane-Portfolio.pdf');
  const archive=page.locator('.origin-archive');
  await archive.locator('summary').click();
  await expect(archive.locator('summary')).toHaveText('From the archive:');
@@ -73,7 +74,7 @@ test('reduced motion and no-JavaScript visitors keep a complete readable site',a
 });
 
 test('PDFs, sitemap, and social preview are available',async({request})=>{
- for(const path of ['/documents/Baranaba-Mugabane-CV.pdf','/documents/Baranaba-Mugabane-Masters-Thesis.pdf','/sitemap.xml','/images/social-card.jpg']){
+ for(const path of ['/documents/Baranaba-Mugabane-CV.pdf','/documents/Baranaba-Mugabane-Portfolio.pdf','/documents/Baranaba-Mugabane-Masters-Thesis.pdf','/sitemap.xml','/images/social-card.jpg']){
   const response=await request.get(path);expect(response.ok(),path).toBeTruthy();
  }
  const xml=await (await request.get('/sitemap.xml')).text();for(const slug of slugs)expect(xml).toContain(`/work/${slug}/`);
